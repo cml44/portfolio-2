@@ -1,17 +1,14 @@
-import { useState } from "react";
-import { filesystem } from "./filesystem";
-import Scene from "./components/Scene";
+import { useState } from 'react';
+import { filesystem } from './data/filesystem';
+import { Scene } from './components/Tree';
 
 export default function App() {
-  console.log("App rendered");
-
-  const [openIds, setOpenIds] = useState(new Set(["root"]));
+  const [openIds, setOpenIds] = useState(new Set(['root']));
 
   function toggleOpen(id) {
     setOpenIds(prev => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      next.has(id) ? next.delete(id) : next.add(id);
       return next;
     });
   }
